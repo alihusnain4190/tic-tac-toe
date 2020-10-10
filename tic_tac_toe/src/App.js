@@ -3,6 +3,7 @@ import "./App.css";
 import Box from "./Box";
 import Winner from "./Winner";
 import Reset from "./Reset";
+import DrawGame from './DrawGame';
 class App extends React.Component {
   state = {
     board: Array(9).fill(null),
@@ -14,12 +15,13 @@ class App extends React.Component {
 
   };
 
-  resetBoard = () => {
- let newArr=   Array(9).fill(null)
+  resetBoard = (winner) => {
+    let newArr = Array(9).fill(null)
     this.setState((prevState) => {
       return {
         countX: 0,
-        countO:0,
+        countO: 0,
+        winner:false  ,
         board:newArr,
         isActive: true,
       };
@@ -27,7 +29,9 @@ class App extends React.Component {
 
   handleArr = (val) => {
     let newBoard = [...this.state.board];
+    // change player x to o
     let active = this.state.isActive;
+    /// for Count Increment
     let xCount = this.state.countX++;
     let oCount = this.state.countO++;
     if (this.state.isActive === true && newBoard[val] === null) {
@@ -57,58 +61,91 @@ class App extends React.Component {
       };
     });
   };
+  winnerValue = (value) => {
+   
+    console.log('ali husnain')
+    // console.log(result)
+    this.setState((prev) => {
+      return{winner:true}
+    })
+  }
   render() {
+    // console.log(this.state.winner)
     return (
+
       <div className="gameboard">
         <Winner
-        countX={this.state.countX}
-         countO={this.state.countO}
+          winnerValue={() => { this.winnerValue(false) }}
+          countX={this.state.countX}
+          countO={this.state.countO}
           value={this.state.board}
           winner={this.state.winner}
           gameover={this.state.gameOver}
 
         ></Winner>
+        <DrawGame
+           countX={this.state.countX}
+          countO={this.state.countO}
+          winner={this.state.winner}
+        ></DrawGame>
         <div className="game">
           <Box
+            winner={this.state.winner}
             value={this.state.board[0]}
             handleArr={() => this.handleArr(0)}
           ></Box>
           <Box
+            
+            winner={this.state.winner}
             value={this.state.board[1]}
             handleArr={() => this.handleArr(1)}
           ></Box>
           <Box
+            
+            winner={this.state.winner}
             value={this.state.board[2]}
             handleArr={() => this.handleArr(2)}
           ></Box>
 
           <Box
+            
+            winner={this.state.winner}
             value={this.state.board[3]}
             handleArr={() => this.handleArr(3)}
           ></Box>
           <Box
+            
+            winner={this.state.winner}
             value={this.state.board[4]}
             handleArr={() => this.handleArr(4)}
           ></Box>
           <Box
+            
+            winner={this.state.winner}
             value={this.state.board[5]}
             handleArr={() => this.handleArr(5)}
           ></Box>
 
           <Box
+            
+            winner={this.state.winner}
             value={this.state.board[6]}
             handleArr={() => this.handleArr(6)}
           ></Box>
           <Box
+            
+            winner={this.state.winner}
             value={this.state.board[7]}
             handleArr={() => this.handleArr(7)}
           ></Box>
           <Box
+            
+            winner={this.state.winner}
             value={this.state.board[8]}
             handleArr={() => this.handleArr(8)}
           ></Box>
         </div>
-        <Reset resetBoard={this.resetBoard}></Reset>
+        <Reset resetBoard={()=>{this.resetBoard(false)}}></Reset>
       </div>
     );
   }
