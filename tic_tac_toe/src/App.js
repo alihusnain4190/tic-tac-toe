@@ -9,27 +9,39 @@ class App extends React.Component {
     isActive: true,
     gameOver: "gameover",
     winner: false,
+     countX : 0,
+     countO : 0,
+
   };
 
   resetBoard = () => {
-    console.log("reset button");
-    this.setState((currentStat) => {
-      return (currentStat.board = Array(9).fill(null));
-    });
-  };
+ let newArr=   Array(9).fill(null)
+    this.setState((prevState) => {
+      return {
+        countX: 0,
+        countO:0,
+        board:newArr,
+        isActive: true,
+      };
+    });  };
 
   handleArr = (val) => {
     let newBoard = [...this.state.board];
     let active = this.state.isActive;
+    let xCount = this.state.countX++;
+    let oCount = this.state.countO++;
     if (this.state.isActive === true && newBoard[val] === null) {
       newBoard[val] = "X";
+      xCount++;       
       active = false;
     } else if (newBoard[val] === null) {
       newBoard[val] = "O";
-
+      oCount++;
       active = true;
     } else {
       return {
+        countX: xCount,
+        countO:oCount,
         board: newBoard,
         isActive: active,
       };
@@ -37,19 +49,24 @@ class App extends React.Component {
 
     this.setState((prevState) => {
       return {
+
+        countX: xCount,
+        countO:oCount,
         board: newBoard,
         isActive: active,
       };
     });
   };
   render() {
-    console.log(this.state.board);
     return (
       <div className="gameboard">
         <Winner
+        countX={this.state.countX}
+         countO={this.state.countO}
           value={this.state.board}
           winner={this.state.winner}
           gameover={this.state.gameOver}
+
         ></Winner>
         <div className="game">
           <Box

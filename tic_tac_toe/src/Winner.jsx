@@ -1,137 +1,126 @@
 import React from "react";
-let winner = false;
 
-const Winner = (props) => {
-  console.log(props.value);
-  // row winner
-
-  if (winner === false) {
+class Winner extends React.Component{
+  state={
+  winner:false,
+  }
+  render() {
     if (
-      props.value[0] === props.value[1] &&
-      props.value[0] === props.value[2]
+          this.props.value[0] === this.props.value[1] &&
+          this.props.value[0] === this.props.value[2]
+        ) {
+          if (this.props.value[0] === "X") {
+           this.state.winner= true;
+          return <h1>X is the Winner!!!</h1>;
+          }else if (this.props.value[0] === "O") {
+           this.state.winner= true;
+          return <h1>O is the Winner!!!</h1>;
+             }
+    }
+        if (
+      this.props.value[3] === this.props.value[4] &&
+      this.props.value[3] === this.props.value[5]
     ) {
-      if (props.value[0] === "X") {
-        winner = true;
+      if (this.props.value[3] === "X") {
+        this.state.winner= true;
         return <h1>X is the Winner!!!</h1>;
-      } else if (props.value[0] === "O") {
-        winner = true;
+      } else if (this.props.value[3] === "O") {
+        this.state.winner= true;
         return <h1>O is the Winner!!!</h1>;
       }
     }
 
     if (
-      props.value[3] === props.value[4] &&
-      props.value[3] === props.value[5]
+      this.props.value[6] === this.props.value[7] &&
+      this.props.value[6] === this.props.value[8]
     ) {
-      if (props.value[3] === "X") {
-        winner = true;
+      if (this.props.value[6] === "X") {
+        this.state.winner = true;
         return <h1>X is the Winner!!!</h1>;
-      } else if (props.value[3] === "O") {
-        winner = true;
+      } else if (this.props.value[6] === "O") {
+        this.state.winner = true;
+        return <h1>O is the Winner!!!</h1>;
+      }
+    }
+  //   //collum winner
+
+    if (
+      this.props.value[0] === this.props.value[3] &&
+      this.props.value[0] === this.props.value[6]
+    ) {
+      if (this.props.value[0] === "X") {
+        this.state.winner = true;
+        return <h1>X is the Winner!!!</h1>;
+      } else if (this.props.value[0] === "O") {
+        this.state.winner= true;
         return <h1>O is the Winner!!!</h1>;
       }
     }
 
     if (
-      props.value[6] === props.value[7] &&
-      props.value[6] === props.value[8]
+      this.props.value[1] === this.props.value[4] &&
+      this.props.value[1] === this.props.value[7]
     ) {
-      if (props.value[6] === "X") {
-        winner = true;
+      if (this.props.value[1] === "X") {
+        this.state.winner= true;
         return <h1>X is the Winner!!!</h1>;
-      } else if (props.value[6] === "O") {
-        winner = true;
-        return <h1>O is the Winner!!!</h1>;
-      }
-    }
-    //collum winner
-
-    if (
-      props.value[0] === props.value[3] &&
-      props.value[0] === props.value[6]
-    ) {
-      if (props.value[0] === "X") {
-        winner = true;
-        return <h1>X is the Winner!!!</h1>;
-      } else if (props.value[0] === "O") {
-        winner = true;
+      } else if (this.props.value[1] === "O") {
+        this.state.winner = true;
         return <h1>O is the Winner!!!</h1>;
       }
     }
 
     if (
-      props.value[1] === props.value[4] &&
-      props.value[1] === props.value[7]
+      this.props.value[2] === this.props.value[5] &&
+      this.props.value[2] === this.props.value[8]
     ) {
-      if (props.value[1] === "X") {
-        winner = true;
+      if (this.props.value[2] === "X") {
+        this.state.winner = true;
         return <h1>X is the Winner!!!</h1>;
-      } else if (props.value[1] === "O") {
-        winner = true;
-        return <h1>O is the Winner!!!</h1>;
-      }
-    }
-
-    if (
-      props.value[2] === props.value[5] &&
-      props.value[2] === props.value[8]
-    ) {
-      if (props.value[2] === "X") {
-        winner = true;
-        return <h1>X is the Winner!!!</h1>;
-      } else if (props.value[2] === "O") {
-        winner = true;
+      } else if (this.props.value[2] === "O") {
+        this.state.winner = true;
         return <h1>O is the Winner!!!</h1>;
       }
       //diaganal winner
     }
-
+   
     if (
-      props.value[0] === props.value[4] &&
-      props.value[0] === props.value[8]
-    ) {
-      if (props.value[0] === "X") {
-        winner = true;
-        return <h1>X is the Winner!!!</h1>;
-      } else if (props.value[0] === "O") {
-        winner = true;
-        return <h1>O is the Winner!!!</h1>;
-      }
-    }
-
-    if (
-      props.value[2] === props.value[4] &&
-      props.value[2] === props.value[6]
-    ) {
-      if (props.value[2] === "X") {
-        winner = true;
-        return <h1>X is the Winner!!!</h1>;
-      } else if (props.value[2] === "O") {
-        winner = true;
-        return <h1>O is the Winner!!!</h1>;
-      }
-    }
-    let countX = 0;
-    let countO = 0;
-
-    props.value.forEach((box) => {
-      if (box === "X") {
-        countX++;
-      }
-      if (box === "O") {
-        countO++;
-      }
-    });
-    if (
-      (countX === 5 && countO === 4 && winner === false) ||
-      (countO === 5 && countX === 4 && winner === false)
+     this.props.value[0] ===this.props.value[4] &&
+     this.props.value[0] ===this.props.value[8]
+    )
+    {
+       if (this.props.value[0] === "X") {
+         this.winner = true;
+         return <h1>X is the Winner!!!</h1>;
+       } else if (this.props.value[0] === "O") {
+         this.winner = true;
+         return <h1>O is the Winner!!!</h1>;
+       }
+     }
+ 
+     if (
+      this.props.value[2] ===this.props.value[4] &&
+      this.props.value[2] ===this.props.value[6]
+     )
+     {
+       if (this.props.value[2] === "X") {
+         this.state.winner = true;
+         return <h1>X is the Winner!!!</h1>;
+       } else if (this.props.value[2] === "O") {
+         this.state.winner = true;
+         return <h1>O is the Winner!!!</h1>;
+       }
+     }
+     if (
+      (this.props.countX === 5 &&this.props.countO === 4 &&this.state.winner === false) ||
+      (this.state.countO === 5 && this.props.countX === 4 &&this.state.winner === false)
     ) {
       return <h1>Draw!!!!</h1>;
+     }
+   return <h2></h2>
     }
-  } else {
-    return <h2>Game Over!!!</h2>;
-  }
-  return <p></p>;
-};
+} 
+  
 
+  
 export default Winner;
