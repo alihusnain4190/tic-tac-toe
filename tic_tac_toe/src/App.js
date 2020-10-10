@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Box from "./Box";
 import Winner from "./Winner";
-import Reset from "./Reset";
+import PlayeAgain from "./PlayeAgain";
 import DrawGame from './DrawGame';
 class App extends React.Component {
   state = {
@@ -11,7 +11,7 @@ class App extends React.Component {
     gameOver: "gameover",
     winner: false,
      countX : 0,
-     countO : 0,
+    countO: 0,
 
   };
 
@@ -62,20 +62,20 @@ class App extends React.Component {
     });
   };
   winnerValue = (value) => {
-   
-    console.log('ali husnain')
-    // console.log(result)
+    console.log(value)
     this.setState((prev) => {
-      return{winner:true}
+      return {
+        winner: true,
+      }
     })
   }
   render() {
-    // console.log(this.state.winner)
     return (
 
       <div className="gameboard">
         <Winner
           winnerValue={() => { this.winnerValue(false) }}
+         
           countX={this.state.countX}
           countO={this.state.countO}
           value={this.state.board}
@@ -83,6 +83,7 @@ class App extends React.Component {
           gameover={this.state.gameOver}
 
         ></Winner>
+       
         <DrawGame
            countX={this.state.countX}
           countO={this.state.countO}
@@ -145,7 +146,8 @@ class App extends React.Component {
             handleArr={() => this.handleArr(8)}
           ></Box>
         </div>
-        <Reset resetBoard={()=>{this.resetBoard(false)}}></Reset>
+       
+        <PlayeAgain resetBoard={() => { this.resetBoard(false) }}></PlayeAgain>
       </div>
     );
   }

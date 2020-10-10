@@ -1,10 +1,11 @@
 import React from "react";
 
-const Reset = (props) => {
+const PlayeAgain = (props) => {
+
   return (
     <button className="reset" onClick={props.resetBoard}>
-      Reset Game
+     Playe Again
     </button>
   );
 };
-export default Reset;
+export default PlayeAgain;

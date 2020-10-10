@@ -37,12 +37,35 @@ body {
 }
 
 .reset {
-  width: 100px;
+  width: 150px;
   height: 50px;
   border-radius: 10%;
   background-color: rgba(3, 57, 107, 0.705);
-  font-size: 12px;
+  font-size: 20px;
   color: aliceblue;
   font-family: sans-serif;
-  margin-left: 47%;
+  margin-left: 40%;
+}
+.btn-reset {
+
+  width: 150px;
+  height: 50px;
+  border-radius: 10%;
+  background-color: rgba(3, 57, 107, 0.705);
+  font-size: 20px;
+  color: aliceblue;
+  font-family: sans-serif;
+  display: inline-block;
+  margin-left: 40%;
+}
+.player-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.player-display p {
+  padding-left: 4rem;
+  color: aliceblue;
+  font-size: large;
+  font-family: sans-serif;
 }
