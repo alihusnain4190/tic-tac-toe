@@ -21,5 +21,5 @@
 [ ] Flesh out your components with methods - this is a pretty big step!
 
 ## Style
-[ ] Add classNames
+[ ] Add yclassNames
 [ ] Create and import .css file(s)

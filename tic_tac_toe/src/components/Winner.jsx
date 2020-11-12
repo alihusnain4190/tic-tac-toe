@@ -190,7 +190,7 @@ class Winner extends React.Component{
       </div>)
     }
     return(<div className="player">
-    <h1 >Game Start</h1>
+    <h1 >Tic Tac Toe</h1>
     <div className="player-display">
 
           <p className="player-score">Player-1st Score {this.state.player1}</p>
