@@ -3,7 +3,7 @@ const Box = (props) => {
    
     if (props.winner === false) {
         return (
-            <button className="btn" onClick={props.handleArr}>{props.value}</button>
+            <button className="btn box" onClick={props.handleArr}>{props.value}</button>
         )
     }
     else {

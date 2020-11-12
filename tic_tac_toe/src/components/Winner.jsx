@@ -193,13 +193,13 @@ class Winner extends React.Component{
     <h1 >Game Start</h1>
     <div className="player-display">
 
-          <p className="player-score">firstPlayer Score {this.state.player1}</p>
-          <p className="player-score">secondPlayer Score {this.state.player2}</p>
+          <p className="player-score">Player-1st Score {this.state.player1}</p>
+          <p className="player-score">Player-2nd Score {this.state.player2}</p>
     </div>
     <div>
       <button className="btn-reset" onClick={this.resetHandler}>Reset Game</button>
         
-          </div>
+      </div>
     
     </div>)
   }
