@@ -61,7 +61,6 @@ class App extends React.Component {
     });
   };
   winnerValue = (value) => {
-    console.log(value);
     this.setState((prev) => {
       return {
         winner: true,
@@ -69,6 +68,7 @@ class App extends React.Component {
     });
   };
   render() {
+    // console.log(this.statx );
     return (
       <div className="gameboard">
         <Winner
